@@ -1,4 +1,3 @@
-type TOptions = ref object
 type TFocusPolicy* = distinct int
 var
   ClickToFocus* {.importc: "options.ClickToFocus", nodecl.}: TFocusPolicy
@@ -49,11 +48,11 @@ var
   MouseWheelChangeOpacity* {.importc: "options.MouseWheelChangeOpacity", nodecl.}: TMouseWheelCommand
   MouseWheelChangeCurrentTab* {.importc: "options.MouseWheelChangeCurrentTab", nodecl.}: TMouseWheelCommand
   MouseWheelNothing* {.importc: "options.MouseWheelNothing", nodecl.}: TMouseWheelCommand
-type T@113* = distinct int
+type T113* = distinct int
 var
-  ElectricDisabled* {.importc: "options.ElectricDisabled", nodecl.}: T@113
-  ElectricMoveOnly* {.importc: "options.ElectricMoveOnly", nodecl.}: T@113
-  ElectricAlways* {.importc: "options.ElectricAlways", nodecl.}: T@113
+  ElectricDisabled* {.importc: "options.ElectricDisabled", nodecl.}: T113
+  ElectricMoveOnly* {.importc: "options.ElectricMoveOnly", nodecl.}: T113
+  ElectricAlways* {.importc: "options.ElectricAlways", nodecl.}: T113
 var focusPolicy* {.importc: "options.focusPolicy", nodecl}: TFocusPolicy
 var nextFocusPrefersMouse* {.importc: "options.nextFocusPrefersMouse", nodecl}: bool
 var clickRaise* {.importc: "options.clickRaise", nodecl}: bool

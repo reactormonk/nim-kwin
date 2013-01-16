@@ -116,13 +116,13 @@ proc finishCompositing*(toplevel: TToplevel) {.importcpp: "finishCompositing"}
 proc updateUnredirectedState*(toplevel: TToplevel): bool {.importcpp: "updateUnredirectedState"}
 proc unredirected*(toplevel: TToplevel): bool {.importcpp: "unredirected"}
 proc suspendUnredirect*(toplevel: TToplevel, suspend: bool) {.importcpp: "suspendUnredirect"}
-proc addRepaint*(toplevel: TToplevel, r: QRect): Q_INVOKABLE {.importcpp: "addRepaint"}
-proc addRepaint*(toplevel: TToplevel, r: QRegion): Q_INVOKABLE {.importcpp: "addRepaint"}
-proc addRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int): Q_INVOKABLE {.importcpp: "addRepaint"}
-proc addLayerRepaint*(toplevel: TToplevel, r: QRect): Q_INVOKABLE {.importcpp: "addLayerRepaint"}
-proc addLayerRepaint*(toplevel: TToplevel, r: QRegion): Q_INVOKABLE {.importcpp: "addLayerRepaint"}
-proc addLayerRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int): Q_INVOKABLE {.importcpp: "addLayerRepaint"}
-proc addRepaintFull*(toplevel: TToplevel): Q_INVOKABLE {.importcpp: "addRepaintFull"}
+proc addRepaint*(toplevel: TToplevel, r: QRect) {.importcpp: "addRepaint"}
+proc addRepaint*(toplevel: TToplevel, r: QRegion) {.importcpp: "addRepaint"}
+proc addRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int) {.importcpp: "addRepaint"}
+proc addLayerRepaint*(toplevel: TToplevel, r: QRect) {.importcpp: "addLayerRepaint"}
+proc addLayerRepaint*(toplevel: TToplevel, r: QRegion) {.importcpp: "addLayerRepaint"}
+proc addLayerRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int) {.importcpp: "addLayerRepaint"}
+proc addRepaintFull*(toplevel: TToplevel) {.importcpp: "addRepaintFull"}
 proc addWorkspaceRepaint*(toplevel: TToplevel, r: QRect) {.importcpp: "addWorkspaceRepaint"}
 proc addWorkspaceRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int) {.importcpp: "addWorkspaceRepaint"}
 proc repaints*(toplevel: TToplevel): QRegion {.importcpp: "repaints"}

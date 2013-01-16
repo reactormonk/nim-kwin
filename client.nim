@@ -1,4 +1,6 @@
-type TClient = ref object
+import toplevel
+
+type TClient = ref object of TToplevel
   active*: bool
   caption*: string
   closeable*: bool
@@ -49,9 +51,9 @@ type TCoordinateMode* = distinct int
 var
   DecorationRelative* {.importc: "DecorationRelative", nodecl.}: TCoordinateMode
   WindowRelative* {.importc: "WindowRelative", nodecl.}: TCoordinateMode
-proc clientManaging*(client: TClient, callback: proc(: TClient)) {.importcpp: "clientManaging.connect"}
-proc clientFullScreenSet*(client: TClient, callback: proc(: TClient, : bool, : bool)) {.importcpp: "clientFullScreenSet.connect"}
-proc clientMaximizedStateChanged*(client: TClient, callback: proc(: TClient, : KDecorationDefines::MaximizeMode)) {.importcpp: "clientMaximizedStateChanged.connect"}
+proc clientManaging*(client: TClient, callback: proc(client: TClient)) {.importcpp: "clientManaging.connect"}
+proc clientFullScreenSet*(client: TClient, callback: proc(client: TClient, : bool, : bool)) {.importcpp: "clientFullScreenSet.connect"}
+proc clientMaximizedStateChanged*(client: TClient, callback: proc(client: TClient, : KDecorationDefines::MaximizeMode)) {.importcpp: "clientMaximizedStateChanged.connect"}
 proc clientMaximizedStateChanged*(client: TClient, callback: proc(c: TClient, h: bool, v: bool)) {.importcpp: "clientMaximizedStateChanged.connect"}
 proc clientMinimized*(client: TClient, callback: proc(client: TClient, animate: bool)) {.importcpp: "clientMinimized.connect"}
 proc clientUnminimized*(client: TClient, callback: proc(client: TClient, animate: bool)) {.importcpp: "clientUnminimized.connect"}
@@ -84,15 +86,15 @@ proc Client*(client: TClient, ws: Workspace):  {.importcpp: "Client"}
 proc wrapperId*(client: TClient): Window {.importcpp: "wrapperId"}
 proc decorationId*(client: TClient): Window {.importcpp: "decorationId"}
 proc inputId*(client: TClient): Window {.importcpp: "inputId"}
-proc transientFor*(client: TClient): Client {.importcpp: "transientFor"}
-proc transientFor*(client: TClient): Client {.importcpp: "transientFor"}
+proc transientFor*(client: TClient): TClient {.importcpp: "transientFor"}
+proc transientFor*(client: TClient): TClient {.importcpp: "transientFor"}
 proc isTransient*(client: TClient): bool {.importcpp: "isTransient"}
 proc groupTransient*(client: TClient): bool {.importcpp: "groupTransient"}
 proc wasOriginallyGroupTransient*(client: TClient): bool {.importcpp: "wasOriginallyGroupTransient"}
-proc mainClients*(client: TClient): ClientList {.importcpp: "mainClients"}
-proc allMainClients*(client: TClient): ClientList {.importcpp: "allMainClients"}
-proc hasTransient*(client: TClient, c: Client, indirect: bool): bool {.importcpp: "hasTransient"}
-proc transients*(client: TClient): ClientList {.importcpp: "transients"}
+proc mainClients*(client: TClient): seq[TClient] {.importcpp: "mainClients"}
+proc allMainClients*(client: TClient): seq[TClient] {.importcpp: "allMainClients"}
+proc hasTransient*(client: TClient, c: TClient, indirect: bool): bool {.importcpp: "hasTransient"}
+proc transients*(client: TClient): seq[Tclient] {.importcpp: "transients"}
 proc checkTransient*(client: TClient, w: Window) {.importcpp: "checkTransient"}
 proc findModal*(client: TClient, allow_itself: bool): Client {.importcpp: "findModal"}
 proc group*(client: TClient): Group {.importcpp: "group"}
@@ -257,10 +259,10 @@ proc strutRect*(client: TClient, area: StrutArea): StrutRect {.importcpp: "strut
 proc strutRects*(client: TClient): StrutRects {.importcpp: "strutRects"}
 proc hasStrut*(client: TClient): bool {.importcpp: "hasStrut"}
 proc tabGroup*(client: TClient): TabGroup {.importcpp: "tabGroup"}
-proc tabBefore*(client: TClient, other: Client, activate: bool): Q_INVOKABLE {.importcpp: "tabBefore"}
-proc tabBehind*(client: TClient, other: Client, activate: bool): Q_INVOKABLE {.importcpp: "tabBehind"}
-proc syncTabGroupFor*(client: TClient, property: string, fromThisClient: bool): Q_INVOKABLE {.importcpp: "syncTabGroupFor"}
-proc untab*(client: TClient, toGeometry: QRect, clientRemoved: bool): Q_INVOKABLE {.importcpp: "untab"}
+proc tabBefore*(client: TClient, other: TClient, activate: bool): bool {.importcpp: "tabBefore"}
+proc tabBehind*(client: TClient, other: TClient, activate: bool): bool {.importcpp: "tabBehind"}
+proc syncTabGroupFor*(client: TClient, property: string, fromThisClient: bool = false) {.importcpp: "syncTabGroupFor"}
+proc untab*(client: TClient, toGeometry: QRect, clientRemoved: bool) {.importcpp: "untab"}
 proc setTabGroup*(client: TClient, group: TabGroup) {.importcpp: "setTabGroup"}
 proc setClientShown*(client: TClient, shown: bool) {.importcpp: "setClientShown"}
 proc dontMoveResize*(client: TClient) {.importcpp: "dontMoveResize"}
@@ -277,8 +279,7 @@ proc decorationRect*(client: TClient): QRect {.importcpp: "decorationRect"}
 proc transparentRect*(client: TClient): QRect {.importcpp: "transparentRect"}
 proc decorationPendingRegion*(client: TClient): QRegion {.importcpp: "decorationPendingRegion"}
 proc decorationHasAlpha*(client: TClient): bool {.importcpp: "decorationHasAlpha"}
-proc layoutDecorationRects*(client: TClient, left: QRect, top: QRect, right: QRect, bottom: QRect, mode: CoordinateMode) {.importcpp: "layoutDecorationRects"}
-proc tabBoxClient*(client: TClient): QWeakPointer< {.importcpp: "tabBoxClient"}
+proc layoutDecorationRects*(client: TClient, left, top, right, bottom: QRect, mode: CoordinateMode) {.importcpp: "layoutDecorationRects"}
 proc isFirstInTabBox*(client: TClient): bool {.importcpp: "isFirstInTabBox"}
 proc setFirstInTabBox*(client: TClient, enable: bool) {.importcpp: "setFirstInTabBox"}
 proc updateFirstInTabBox*(client: TClient) {.importcpp: "updateFirstInTabBox"}

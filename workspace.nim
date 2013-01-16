@@ -1,4 +1,3 @@
-type TWorkspace = ref object
 type TClientAreaOption* = distinct int
 var
   PlacementArea* {.importc: "workspace.PlacementArea", nodecl.}: TClientAreaOption
@@ -72,7 +71,7 @@ proc activeScreen*(): int {.importc: "workspace.activeScreen"}
 proc numScreens*(): int {.importc: "workspace.numScreens"}
 proc currentActivity*(): string {.importc: "workspace.currentActivity"}
 proc activityList*(): seq[string] {.importc: "workspace.activityList"}
-proc clientList*(): Q_INVOKABLE {.importc: "workspace.clientList"}
+proc clientList*(): seq[TClient] {.importc: "workspace.clientList"}
 proc clientArea*(option: TClientAreaOption, screen: int, desktop: int) {.importc: "workspace.clientArea"}
 proc clientArea*(option: TClientAreaOption, point: QPoint, desktop: int) {.importc: "workspace.clientArea"}
 proc clientArea*(option: TClientAreaOption, client: TClient) {.importc: "workspace.clientArea"}
