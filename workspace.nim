@@ -1,25 +1,25 @@
 type TClientAreaOption* = distinct int
 var
-  PlacementArea* {.importc: "workspace.PlacementArea", nodecl.}: TClientAreaOption
-  MovementArea* {.importc: "workspace.MovementArea", nodecl.}: TClientAreaOption
-  MaximizeArea* {.importc: "workspace.MaximizeArea", nodecl.}: TClientAreaOption
-  MaximizeFullArea* {.importc: "workspace.MaximizeFullArea", nodecl.}: TClientAreaOption
-  FullScreenArea* {.importc: "workspace.FullScreenArea", nodecl.}: TClientAreaOption
-  WorkArea* {.importc: "workspace.WorkArea", nodecl.}: TClientAreaOption
-  FullArea* {.importc: "workspace.FullArea", nodecl.}: TClientAreaOption
-  ScreenArea* {.importc: "workspace.ScreenArea", nodecl.}: TClientAreaOption
+  PlacementArea* {.importc: "KWin.PlacementArea", nodecl.}: TClientAreaOption
+  MovementArea* {.importc: "KWin.MovementArea", nodecl.}: TClientAreaOption
+  MaximizeArea* {.importc: "KWin.MaximizeArea", nodecl.}: TClientAreaOption
+  MaximizeFullArea* {.importc: "KWin.MaximizeFullArea", nodecl.}: TClientAreaOption
+  FullScreenArea* {.importc: "KWin.FullScreenArea", nodecl.}: TClientAreaOption
+  WorkArea* {.importc: "KWin.WorkArea", nodecl.}: TClientAreaOption
+  FullArea* {.importc: "KWin.FullArea", nodecl.}: TClientAreaOption
+  ScreenArea* {.importc: "KWin.ScreenArea", nodecl.}: TClientAreaOption
 type TElectricBorder* = distinct int
 var
-  ElectricTop* {.importc: "workspace.ElectricTop", nodecl.}: TElectricBorder
-  ElectricTopRight* {.importc: "workspace.ElectricTopRight", nodecl.}: TElectricBorder
-  ElectricRight* {.importc: "workspace.ElectricRight", nodecl.}: TElectricBorder
-  ElectricBottomRight* {.importc: "workspace.ElectricBottomRight", nodecl.}: TElectricBorder
-  ElectricBottom* {.importc: "workspace.ElectricBottom", nodecl.}: TElectricBorder
-  ElectricBottomLeft* {.importc: "workspace.ElectricBottomLeft", nodecl.}: TElectricBorder
-  ElectricLeft* {.importc: "workspace.ElectricLeft", nodecl.}: TElectricBorder
-  ElectricTopLeft* {.importc: "workspace.ElectricTopLeft", nodecl.}: TElectricBorder
-  ELECTRIC_COUNT* {.importc: "workspace.ELECTRIC_COUNT", nodecl.}: TElectricBorder
-  ElectricNone* {.importc: "workspace.ElectricNone", nodecl.}: TElectricBorder
+  ElectricTop* {.importc: "KWin.ElectricTop", nodecl.}: TElectricBorder
+  ElectricTopRight* {.importc: "KWin.ElectricTopRight", nodecl.}: TElectricBorder
+  ElectricRight* {.importc: "KWin.ElectricRight", nodecl.}: TElectricBorder
+  ElectricBottomRight* {.importc: "KWin.ElectricBottomRight", nodecl.}: TElectricBorder
+  ElectricBottom* {.importc: "KWin.ElectricBottom", nodecl.}: TElectricBorder
+  ElectricBottomLeft* {.importc: "KWin.ElectricBottomLeft", nodecl.}: TElectricBorder
+  ElectricLeft* {.importc: "KWin.ElectricLeft", nodecl.}: TElectricBorder
+  ElectricTopLeft* {.importc: "KWin.ElectricTopLeft", nodecl.}: TElectricBorder
+  ELECTRIC_COUNT* {.importc: "KWin.ELECTRIC_COUNT", nodecl.}: TElectricBorder
+  ElectricNone* {.importc: "KWin.ElectricNone", nodecl.}: TElectricBorder
 var currentDesktop* {.importc: "workspace.currentDesktop", nodecl}: int
 var activeClient* {.importc: "workspace.activeClient", nodecl}: TClient
 var desktopGridSize* {.importc: "workspace.desktopGridSize", nodecl}: QSize
