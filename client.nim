@@ -191,8 +191,6 @@ proc takeActivity*(client: TClient, flags: int, handled: bool, : allowed_t) {.im
 proc takeFocus*(client: TClient, : allowed_t) {.importcpp: "takeFocus".}
 proc isDemandingAttention*(client: TClient): bool {.importcpp: "isDemandingAttention".}
 proc demandAttention*(client: TClient, set: bool) {.importcpp: "demandAttention".}
-proc setMask*(client: TClient, r: QRegion, mode: int) {.importcpp: "setMask".}
-proc mask*(client: TClient): QRegion {.importcpp: "mask".}
 proc updateDecoration*(client: TClient, check_workspace_pos: bool, force: bool) {.importcpp: "updateDecoration".}
 proc checkBorderSizes*(client: TClient, also_resize: bool): bool {.importcpp: "checkBorderSizes".}
 proc triggerDecorationRepaint*(client: TClient) {.importcpp: "triggerDecorationRepaint".}
@@ -278,7 +276,6 @@ proc paddingTop*(client: TClient): int {.importcpp: "paddingTop".}
 proc paddingBottom*(client: TClient): int {.importcpp: "paddingBottom".}
 proc decorationRect*(client: TClient): TRect {.importcpp: "decorationRect".}
 proc transparentRect*(client: TClient): TRect {.importcpp: "transparentRect".}
-proc decorationPendingRegion*(client: TClient): QRegion {.importcpp: "decorationPendingRegion".}
 proc decorationHasAlpha*(client: TClient): bool {.importcpp: "decorationHasAlpha".}
 proc layoutDecorationRects*(client: TClient, left: TRect, top: TRect, right: TRect, bottom: TRect, mode: CoordinateMode) {.importcpp: "layoutDecorationRects".}
 proc tabBoxClient*(client: TClient): QWeakPointer< {.importcpp: "tabBoxClient".}

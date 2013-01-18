@@ -51,9 +51,6 @@ proc windowClosed*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, dele
 proc windowShown*(toplevel: TToplevel, callback: proc(toplevel: TToplevel)) {.importcpp: "windowShown.connect".}
 proc shapedChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "shapedChanged.connect".}
 proc needsRepaint*(toplevel: TToplevel, callback: proc()) {.importcpp: "needsRepaint.connect".}
-proc frameId*(toplevel: TToplevel): Window {.importcpp: "frameId".}
-proc window*(toplevel: TToplevel): Window {.importcpp: "window".}
-proc workspace*(toplevel: TToplevel): Workspace {.importcpp: "workspace".}
 proc geometry*(toplevel: TToplevel): TRect {.importcpp: "geometry".}
 proc size*(toplevel: TToplevel): TSize {.importcpp: "size".}
 proc pos*(toplevel: TToplevel): TPoint {.importcpp: "pos".}
@@ -69,7 +66,6 @@ proc clientSize*(toplevel: TToplevel): TSize {.importcpp: "clientSize".}
 proc visibleRect*(toplevel: TToplevel): TRect {.importcpp: "visibleRect".}
 proc decorationRect*(toplevel: TToplevel): TRect {.importcpp: "decorationRect".}
 proc transparentRect*(toplevel: TToplevel): TRect {.importcpp: "transparentRect".}
-proc decorationPendingRegion*(toplevel: TToplevel): QRegion {.importcpp: "decorationPendingRegion".}
 proc isClient*(toplevel: TToplevel): bool {.importcpp: "isClient".}
 proc isDeleted*(toplevel: TToplevel): bool {.importcpp: "isDeleted".}
 proc windowType*(toplevel: TToplevel, direct: bool, supported_types: int): NET::WindowType {.importcpp: "windowType".}
@@ -118,17 +114,13 @@ proc updateUnredirectedState*(toplevel: TToplevel): bool {.importcpp: "updateUnr
 proc unredirected*(toplevel: TToplevel): bool {.importcpp: "unredirected".}
 proc suspendUnredirect*(toplevel: TToplevel, suspend: bool) {.importcpp: "suspendUnredirect".}
 proc addRepaint*(toplevel: TToplevel, r: TRect): Q_INVOKABLE {.importcpp: "addRepaint".}
-proc addRepaint*(toplevel: TToplevel, r: QRegion): Q_INVOKABLE {.importcpp: "addRepaint".}
 proc addRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int): Q_INVOKABLE {.importcpp: "addRepaint".}
 proc addLayerRepaint*(toplevel: TToplevel, r: TRect): Q_INVOKABLE {.importcpp: "addLayerRepaint".}
-proc addLayerRepaint*(toplevel: TToplevel, r: QRegion): Q_INVOKABLE {.importcpp: "addLayerRepaint".}
 proc addLayerRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int): Q_INVOKABLE {.importcpp: "addLayerRepaint".}
 proc addRepaintFull*(toplevel: TToplevel): Q_INVOKABLE {.importcpp: "addRepaintFull".}
 proc addWorkspaceRepaint*(toplevel: TToplevel, r: TRect) {.importcpp: "addWorkspaceRepaint".}
 proc addWorkspaceRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int) {.importcpp: "addWorkspaceRepaint".}
-proc repaints*(toplevel: TToplevel): QRegion {.importcpp: "repaints".}
 proc resetRepaints*(toplevel: TToplevel) {.importcpp: "resetRepaints".}
-proc damage*(toplevel: TToplevel): QRegion {.importcpp: "damage".}
 proc resetDamage*(toplevel: TToplevel, r: TRect) {.importcpp: "resetDamage".}
 proc effectWindow*(toplevel: TToplevel): EffectWindowImpl {.importcpp: "effectWindow".}
 proc effectWindow*(toplevel: TToplevel): EffectWindowImpl {.importcpp: "effectWindow".}
@@ -136,7 +128,6 @@ proc hasShadow*(toplevel: TToplevel): bool {.importcpp: "hasShadow".}
 proc shadow*(toplevel: TToplevel): Shadow {.importcpp: "shadow".}
 proc shadow*(toplevel: TToplevel): Shadow {.importcpp: "shadow".}
 proc getShadow*(toplevel: TToplevel) {.importcpp: "getShadow".}
-proc opaqueRegion*(toplevel: TToplevel): QRegion {.importcpp: "opaqueRegion".}
 proc layer*(toplevel: TToplevel): Layer {.importcpp: "layer".}
 proc resetAndFetchDamage*(toplevel: TToplevel): bool {.importcpp: "resetAndFetchDamage".}
 proc getDamageRegionReply*(toplevel: TToplevel) {.importcpp: "getDamageRegionReply".}
