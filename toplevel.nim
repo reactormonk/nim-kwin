@@ -98,10 +98,7 @@ proc resourceClass*(toplevel: TToplevel): string {.importcpp: "resourceClass".}
 proc wmCommand*(toplevel: TToplevel): string {.importcpp: "wmCommand".}
 proc wmClientMachine*(toplevel: TToplevel, use_localhost: bool): string {.importcpp: "wmClientMachine".}
 proc readyForPainting*(toplevel: TToplevel): bool {.importcpp: "readyForPainting".}
-proc visual*(toplevel: TToplevel): Visual {.importcpp: "visual".}
 proc shape*(toplevel: TToplevel): bool {.importcpp: "shape".}
-proc setOpacity*(toplevel: TToplevel, opacity: double) {.importcpp: "setOpacity".}
-proc opacity*(toplevel: TToplevel): double {.importcpp: "opacity".}
 proc depth*(toplevel: TToplevel): int {.importcpp: "depth".}
 proc hasAlpha*(toplevel: TToplevel): bool {.importcpp: "hasAlpha".}
 proc setupCompositing*(toplevel: TToplevel): bool {.importcpp: "setupCompositing".}

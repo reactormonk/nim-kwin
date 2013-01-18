@@ -243,7 +243,6 @@ proc isHideUtilityWindowsForInactive*(): bool {.importc: "options.isHideUtilityW
 proc isInactiveTabsSkipTaskbar*(): bool {.importc: "options.isInactiveTabsSkipTaskbar".}
 proc isAutogroupSimilarWindows*(): bool {.importc: "options.isAutogroupSimilarWindows".}
 proc isAutogroupInForeground*(): bool {.importc: "options.isAutogroupInForeground".}
-proc animationTimeFactor*(): double {.importc: "options.animationTimeFactor".}
 proc reloadCompositingSettings*(force: bool) {.importc: "options.reloadCompositingSettings".}
 proc compositingMode*(): CompositingType {.importc: "options.compositingMode".}
 proc setCompositingMode*(mode: CompositingType) {.importc: "options.setCompositingMode".}
