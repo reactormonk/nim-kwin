@@ -150,6 +150,9 @@ TypeConv = {
             "void" => :void,
             "uint" => "int",
             "KWin::Toplevel" => "TToplevel",
+            "QPoint" => "TPoint",
+            "QSize" => "TSize",
+            "QRect" => "TRect",
            }
 
 def generate(doc, target, prefix)

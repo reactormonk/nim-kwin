@@ -3,22 +3,22 @@ import helper
 type TToplevel = ref object
   alpha*: bool
   frameId*: TWinId
-  geometry*: QRect
-  visibleRect*: QRect
+  geometry*: TRect
+  visibleRect*: TRect
   height*: int
   opacity*: qreal
-  pos*: QPoint
+  pos*: TPoint
   screen*: int
-  size*: QSize
+  size*: TSize
   width*: int
   windowId*: TWinId
   x*: int
   y*: int
   desktop*: int
   onAllDesktops*: bool
-  rect*: QRect
-  clientPos*: QPoint
-  clientSize*: QSize
+  rect*: TRect
+  clientPos*: TPoint
+  clientSize*: TSize
   resourceName*: string
   resourceClass*: string
   windowRole*: string
@@ -42,11 +42,11 @@ type TToplevel = ref object
   deleted*: bool
   shaped*: bool
 proc opacityChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, oldOpacity: qreal)) {.importcpp: "opacityChanged.connect".}
-proc damaged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, damage: QRect)) {.importcpp: "damaged.connect".}
+proc damaged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, damage: TRect)) {.importcpp: "damaged.connect".}
 proc propertyNotify*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, a: long)) {.importcpp: "propertyNotify.connect".}
 proc geometryChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "geometryChanged.connect".}
-proc geometryShapeChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: QRect)) {.importcpp: "geometryShapeChanged.connect".}
-proc paddingChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: QRect)) {.importcpp: "paddingChanged.connect".}
+proc geometryShapeChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: TRect)) {.importcpp: "geometryShapeChanged.connect".}
+proc paddingChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: TRect)) {.importcpp: "paddingChanged.connect".}
 proc windowClosed*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, deleted: KWin::Deleted)) {.importcpp: "windowClosed.connect".}
 proc windowShown*(toplevel: TToplevel, callback: proc(toplevel: TToplevel)) {.importcpp: "windowShown.connect".}
 proc shapedChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "shapedChanged.connect".}
@@ -55,21 +55,21 @@ proc Toplevel*(toplevel: TToplevel, ws: Workspace):  {.importcpp: "Toplevel".}
 proc frameId*(toplevel: TToplevel): Window {.importcpp: "frameId".}
 proc window*(toplevel: TToplevel): Window {.importcpp: "window".}
 proc workspace*(toplevel: TToplevel): Workspace {.importcpp: "workspace".}
-proc geometry*(toplevel: TToplevel): QRect {.importcpp: "geometry".}
-proc size*(toplevel: TToplevel): QSize {.importcpp: "size".}
-proc pos*(toplevel: TToplevel): QPoint {.importcpp: "pos".}
-proc rect*(toplevel: TToplevel): QRect {.importcpp: "rect".}
+proc geometry*(toplevel: TToplevel): TRect {.importcpp: "geometry".}
+proc size*(toplevel: TToplevel): TSize {.importcpp: "size".}
+proc pos*(toplevel: TToplevel): TPoint {.importcpp: "pos".}
+proc rect*(toplevel: TToplevel): TRect {.importcpp: "rect".}
 proc x*(toplevel: TToplevel): int {.importcpp: "x".}
 proc y*(toplevel: TToplevel): int {.importcpp: "y".}
 proc width*(toplevel: TToplevel): int {.importcpp: "width".}
 proc height*(toplevel: TToplevel): int {.importcpp: "height".}
 proc isOnScreen*(toplevel: TToplevel, screen: int): bool {.importcpp: "isOnScreen".}
 proc screen*(toplevel: TToplevel): int {.importcpp: "screen".}
-proc clientPos*(toplevel: TToplevel): QPoint {.importcpp: "clientPos".}
-proc clientSize*(toplevel: TToplevel): QSize {.importcpp: "clientSize".}
-proc visibleRect*(toplevel: TToplevel): QRect {.importcpp: "visibleRect".}
-proc decorationRect*(toplevel: TToplevel): QRect {.importcpp: "decorationRect".}
-proc transparentRect*(toplevel: TToplevel): QRect {.importcpp: "transparentRect".}
+proc clientPos*(toplevel: TToplevel): TPoint {.importcpp: "clientPos".}
+proc clientSize*(toplevel: TToplevel): TSize {.importcpp: "clientSize".}
+proc visibleRect*(toplevel: TToplevel): TRect {.importcpp: "visibleRect".}
+proc decorationRect*(toplevel: TToplevel): TRect {.importcpp: "decorationRect".}
+proc transparentRect*(toplevel: TToplevel): TRect {.importcpp: "transparentRect".}
 proc decorationPendingRegion*(toplevel: TToplevel): QRegion {.importcpp: "decorationPendingRegion".}
 proc isClient*(toplevel: TToplevel): bool {.importcpp: "isClient".}
 proc isDeleted*(toplevel: TToplevel): bool {.importcpp: "isDeleted".}
@@ -118,19 +118,19 @@ proc finishCompositing*(toplevel: TToplevel) {.importcpp: "finishCompositing".}
 proc updateUnredirectedState*(toplevel: TToplevel): bool {.importcpp: "updateUnredirectedState".}
 proc unredirected*(toplevel: TToplevel): bool {.importcpp: "unredirected".}
 proc suspendUnredirect*(toplevel: TToplevel, suspend: bool) {.importcpp: "suspendUnredirect".}
-proc addRepaint*(toplevel: TToplevel, r: QRect): Q_INVOKABLE {.importcpp: "addRepaint".}
+proc addRepaint*(toplevel: TToplevel, r: TRect): Q_INVOKABLE {.importcpp: "addRepaint".}
 proc addRepaint*(toplevel: TToplevel, r: QRegion): Q_INVOKABLE {.importcpp: "addRepaint".}
 proc addRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int): Q_INVOKABLE {.importcpp: "addRepaint".}
-proc addLayerRepaint*(toplevel: TToplevel, r: QRect): Q_INVOKABLE {.importcpp: "addLayerRepaint".}
+proc addLayerRepaint*(toplevel: TToplevel, r: TRect): Q_INVOKABLE {.importcpp: "addLayerRepaint".}
 proc addLayerRepaint*(toplevel: TToplevel, r: QRegion): Q_INVOKABLE {.importcpp: "addLayerRepaint".}
 proc addLayerRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int): Q_INVOKABLE {.importcpp: "addLayerRepaint".}
 proc addRepaintFull*(toplevel: TToplevel): Q_INVOKABLE {.importcpp: "addRepaintFull".}
-proc addWorkspaceRepaint*(toplevel: TToplevel, r: QRect) {.importcpp: "addWorkspaceRepaint".}
+proc addWorkspaceRepaint*(toplevel: TToplevel, r: TRect) {.importcpp: "addWorkspaceRepaint".}
 proc addWorkspaceRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int) {.importcpp: "addWorkspaceRepaint".}
 proc repaints*(toplevel: TToplevel): QRegion {.importcpp: "repaints".}
 proc resetRepaints*(toplevel: TToplevel) {.importcpp: "resetRepaints".}
 proc damage*(toplevel: TToplevel): QRegion {.importcpp: "damage".}
-proc resetDamage*(toplevel: TToplevel, r: QRect) {.importcpp: "resetDamage".}
+proc resetDamage*(toplevel: TToplevel, r: TRect) {.importcpp: "resetDamage".}
 proc effectWindow*(toplevel: TToplevel): EffectWindowImpl {.importcpp: "effectWindow".}
 proc effectWindow*(toplevel: TToplevel): EffectWindowImpl {.importcpp: "effectWindow".}
 proc hasShadow*(toplevel: TToplevel): bool {.importcpp: "hasShadow".}
