@@ -6,7 +6,7 @@ type TToplevel = ref object
   geometry*: TRect
   visibleRect*: TRect
   height*: int
-  opacity*: qreal
+  opacity*: float
   pos*: TPoint
   screen*: int
   size*: TSize
@@ -41,7 +41,7 @@ type TToplevel = ref object
   managed*: bool
   deleted*: bool
   shaped*: bool
-proc opacityChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, oldOpacity: qreal)) {.importcpp: "opacityChanged.connect".}
+proc opacityChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, oldOpacity: float)) {.importcpp: "opacityChanged.connect".}
 proc damaged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, damage: TRect)) {.importcpp: "damaged.connect".}
 proc propertyNotify*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, a: long)) {.importcpp: "propertyNotify.connect".}
 proc geometryChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "geometryChanged.connect".}

@@ -153,6 +153,7 @@ TypeConv = {
             "QPoint" => "TPoint",
             "QSize" => "TSize",
             "QRect" => "TRect",
+            "qreal" => "float",
            }
 
 def generate(doc, target, prefix)
