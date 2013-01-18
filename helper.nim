@@ -10,6 +10,8 @@ type TPoint* = ref object
 type TSize* = ref object
   w*: int
   h*: int
+
+type TDeleted* = ref object # TODO
   
 proc initRect*(x, y, width, height: int): TRect =
   new(result)

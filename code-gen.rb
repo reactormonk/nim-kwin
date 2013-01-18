@@ -46,9 +46,9 @@ class PoC
 
   def import_statement
     if prefix_call?
-      %({.importcpp: "#{importname}"#{pragmas.empty? ? "" : ", " + pragmas.join(", ")}})
+      %({.importcpp: "#{importname}"#{pragmas.empty? ? "" : ", " + pragmas.join(", ")}.})
     else
-      %({.importc: "#{importname}"#{pragmas.empty? ? "" : ", " + pragmas.join(", ")}})
+      %({.importc: "#{importname}"#{pragmas.empty? ? "" : ", " + pragmas.join(", ")}.})
     end
   end
 end
@@ -181,9 +181,13 @@ def compile(path, target, prefix, type)
   "#{Type.new(fields, type)}\n" + (enums + var + signals + func).join("\n")
 end
 
-puts compile("docs/xml/class_k_win_1_1_workspace_wrapper.xml", nil, "workspace", "TWorkspace")
-puts compile("docs/xml/class_k_win_1_1_options.xml", nil, "options", "TOptions")
-puts compile("docs/xml/class_k_win_1_1_toplevel.xml", "toplevel", nil, "TToplevel")
-puts compile("docs/xml/class_k_win_1_1_client.xml", "client", nil, "TClient")
-puts compile("kwin/scripting/documentation-global.xml", nil, nil, "TGlobal")
-
+if file = ARGV.shift
+  name = ARGV.shift
+  puts compile(file, name, nil, "Q" + name.capitalize)
+else
+  puts compile("docs/xml/class_k_win_1_1_workspace_wrapper.xml", nil, "workspace", "TWorkspace")
+  puts compile("docs/xml/class_k_win_1_1_options.xml", nil, "options", "TOptions")
+  puts compile("docs/xml/class_k_win_1_1_toplevel.xml", "toplevel", nil, "TToplevel")
+  puts compile("docs/xml/class_k_win_1_1_client.xml", "client", nil, "TClient")
+  puts compile("kwin/scripting/documentation-global.xml", nil, nil, "TGlobal")
+end
