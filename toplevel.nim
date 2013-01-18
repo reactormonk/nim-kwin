@@ -68,7 +68,6 @@ proc decorationRect*(toplevel: TToplevel): TRect {.importcpp: "decorationRect".}
 proc transparentRect*(toplevel: TToplevel): TRect {.importcpp: "transparentRect".}
 proc isClient*(toplevel: TToplevel): bool {.importcpp: "isClient".}
 proc isDeleted*(toplevel: TToplevel): bool {.importcpp: "isDeleted".}
-proc windowType*(toplevel: TToplevel, direct: bool, supported_types: int): NET::WindowType {.importcpp: "windowType".}
 proc hasNETSupport*(toplevel: TToplevel): bool {.importcpp: "hasNETSupport".}
 proc isDesktop*(toplevel: TToplevel): bool {.importcpp: "isDesktop".}
 proc isDock*(toplevel: TToplevel): bool {.importcpp: "isDock".}
@@ -98,7 +97,6 @@ proc resourceName*(toplevel: TToplevel): string {.importcpp: "resourceName".}
 proc resourceClass*(toplevel: TToplevel): string {.importcpp: "resourceClass".}
 proc wmCommand*(toplevel: TToplevel): string {.importcpp: "wmCommand".}
 proc wmClientMachine*(toplevel: TToplevel, use_localhost: bool): string {.importcpp: "wmClientMachine".}
-proc wmClientLeader*(toplevel: TToplevel): Window {.importcpp: "wmClientLeader".}
 proc pid*(toplevel: TToplevel): pid_t {.importcpp: "pid".}
 proc windowPixmap*(toplevel: TToplevel, allow_create: bool): Pixmap {.importcpp: "windowPixmap".}
 proc readyForPainting*(toplevel: TToplevel): bool {.importcpp: "readyForPainting".}
@@ -122,8 +120,6 @@ proc addWorkspaceRepaint*(toplevel: TToplevel, r: TRect) {.importcpp: "addWorksp
 proc addWorkspaceRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int) {.importcpp: "addWorkspaceRepaint".}
 proc resetRepaints*(toplevel: TToplevel) {.importcpp: "resetRepaints".}
 proc resetDamage*(toplevel: TToplevel, r: TRect) {.importcpp: "resetDamage".}
-proc effectWindow*(toplevel: TToplevel): EffectWindowImpl {.importcpp: "effectWindow".}
-proc effectWindow*(toplevel: TToplevel): EffectWindowImpl {.importcpp: "effectWindow".}
 proc hasShadow*(toplevel: TToplevel): bool {.importcpp: "hasShadow".}
 proc shadow*(toplevel: TToplevel): Shadow {.importcpp: "shadow".}
 proc shadow*(toplevel: TToplevel): Shadow {.importcpp: "shadow".}

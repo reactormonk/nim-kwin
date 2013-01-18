@@ -84,9 +84,6 @@ proc appMenuUnavailable*(client: TClient, callback: proc()) {.importcpp: "appMen
 proc demandsAttentionChanged*(client: TClient, callback: proc()) {.importcpp: "demandsAttentionChanged.connect".}
 proc blockingCompositingChanged*(client: TClient, callback: proc(client: TClient)) {.importcpp: "blockingCompositingChanged.connect".}
 proc Client*(client: TClient, ws: Workspace):  {.importcpp: "Client".}
-proc wrapperId*(client: TClient): Window {.importcpp: "wrapperId".}
-proc decorationId*(client: TClient): Window {.importcpp: "decorationId".}
-proc inputId*(client: TClient): Window {.importcpp: "inputId".}
 proc transientFor*(client: TClient): Client {.importcpp: "transientFor".}
 proc transientFor*(client: TClient): Client {.importcpp: "transientFor".}
 proc isTransient*(client: TClient): bool {.importcpp: "isTransient".}
@@ -96,7 +93,6 @@ proc mainClients*(client: TClient): ClientList {.importcpp: "mainClients".}
 proc allMainClients*(client: TClient): ClientList {.importcpp: "allMainClients".}
 proc hasTransient*(client: TClient, c: Client, indirect: bool): bool {.importcpp: "hasTransient".}
 proc transients*(client: TClient): ClientList {.importcpp: "transients".}
-proc checkTransient*(client: TClient, w: Window) {.importcpp: "checkTransient".}
 proc findModal*(client: TClient, allow_itself: bool): Client {.importcpp: "findModal".}
 proc group*(client: TClient): Group {.importcpp: "group".}
 proc group*(client: TClient): Group {.importcpp: "group".}
@@ -119,7 +115,6 @@ proc inputPos*(client: TClient): TPoint {.importcpp: "inputPos".}
 proc windowEvent*(client: TClient, e: XEvent): bool {.importcpp: "windowEvent".}
 proc eventFilter*(client: TClient, o: QObject, e: QEvent): bool {.importcpp: "eventFilter".}
 proc windowType*(client: TClient, direct: bool, supported_types: int): NET::WindowType {.importcpp: "windowType".}
-proc manage*(client: TClient, w: Window, isMapped: bool): bool {.importcpp: "manage".}
 proc releaseWindow*(client: TClient, on_shutdown: bool) {.importcpp: "releaseWindow".}
 proc destroyClient*(client: TClient) {.importcpp: "destroyClient".}
 proc adjustedSize*(client: TClient, : TSize, mode: Sizemode): TSize {.importcpp: "adjustedSize".}
@@ -234,11 +229,9 @@ proc caption*(client: TClient, full: bool, stripped: bool): string {.importcpp: 
 proc updateCaption*(client: TClient) {.importcpp: "updateCaption".}
 proc keyPressEvent*(client: TClient, key_code: int) {.importcpp: "keyPressEvent".}
 proc updateMouseGrab*(client: TClient) {.importcpp: "updateMouseGrab".}
-proc moveResizeGrabWindow*(client: TClient): Window {.importcpp: "moveResizeGrabWindow".}
 proc calculateGravitation*(client: TClient, invert: bool, gravity: int): TPoint {.importcpp: "calculateGravitation".}
 proc NETMoveResize*(client: TClient, x_root: int, y_root: int, direction: NET::Direction) {.importcpp: "NETMoveResize".}
 proc NETMoveResizeWindow*(client: TClient, flags: int, x: int, y: int, width: int, height: int) {.importcpp: "NETMoveResizeWindow".}
-proc restackWindow*(client: TClient, above: Window, detail: int, source: NET::RequestSource, timestamp: Time, send_event: bool) {.importcpp: "restackWindow".}
 proc gotPing*(client: TClient, timestamp: Time) {.importcpp: "gotPing".}
 proc checkWorkspacePosition*(client: TClient, oldGeometry: TRect, oldDesktop: int) {.importcpp: "checkWorkspacePosition".}
 proc updateUserTime*(client: TClient, time: Time) {.importcpp: "updateUserTime".}
