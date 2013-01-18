@@ -115,10 +115,6 @@ proc addWorkspaceRepaint*(toplevel: TToplevel, r: TRect) {.importcpp: "addWorksp
 proc addWorkspaceRepaint*(toplevel: TToplevel, x: int, y: int, w: int, h: int) {.importcpp: "addWorkspaceRepaint".}
 proc resetRepaints*(toplevel: TToplevel) {.importcpp: "resetRepaints".}
 proc resetDamage*(toplevel: TToplevel, r: TRect) {.importcpp: "resetDamage".}
-proc hasShadow*(toplevel: TToplevel): bool {.importcpp: "hasShadow".}
-proc shadow*(toplevel: TToplevel): Shadow {.importcpp: "shadow".}
-proc shadow*(toplevel: TToplevel): Shadow {.importcpp: "shadow".}
-proc getShadow*(toplevel: TToplevel) {.importcpp: "getShadow".}
 proc layer*(toplevel: TToplevel): Layer {.importcpp: "layer".}
 proc resetAndFetchDamage*(toplevel: TToplevel): bool {.importcpp: "resetAndFetchDamage".}
 proc getDamageRegionReply*(toplevel: TToplevel) {.importcpp: "getDamageRegionReply".}
