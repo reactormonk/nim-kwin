@@ -51,7 +51,6 @@ proc windowClosed*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, dele
 proc windowShown*(toplevel: TToplevel, callback: proc(toplevel: TToplevel)) {.importcpp: "windowShown.connect".}
 proc shapedChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "shapedChanged.connect".}
 proc needsRepaint*(toplevel: TToplevel, callback: proc()) {.importcpp: "needsRepaint.connect".}
-proc Toplevel*(toplevel: TToplevel, ws: Workspace):  {.importcpp: "Toplevel".}
 proc frameId*(toplevel: TToplevel): Window {.importcpp: "frameId".}
 proc window*(toplevel: TToplevel): Window {.importcpp: "window".}
 proc workspace*(toplevel: TToplevel): Workspace {.importcpp: "workspace".}
