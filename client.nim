@@ -176,7 +176,7 @@ proc setKeepAbove*(client: TClient, : bool) {.importcpp: "setKeepAbove".}
 proc keepBelow*(client: TClient): bool {.importcpp: "keepBelow".}
 proc setKeepBelow*(client: TClient, : bool) {.importcpp: "setKeepBelow".}
 proc layer*(client: TClient): Layer {.importcpp: "layer".}
-proc belongsToLayer*(client: TClient): Layer {.importcpp: "belongsToLayer".}
+proc beintsToLayer*(client: TClient): Layer {.importcpp: "beintsToLayer".}
 proc invalidateLayer*(client: TClient) {.importcpp: "invalidateLayer".}
 proc sessionStackingOrder*(client: TClient): int {.importcpp: "sessionStackingOrder".}
 proc setModal*(client: TClient, modal: bool) {.importcpp: "setModal".}

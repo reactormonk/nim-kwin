@@ -43,7 +43,7 @@ type TToplevel = ref object
   shaped*: bool
 proc opacityChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, oldOpacity: float)) {.importcpp: "opacityChanged.connect".}
 proc damaged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, damage: TRect)) {.importcpp: "damaged.connect".}
-proc propertyNotify*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, a: long)) {.importcpp: "propertyNotify.connect".}
+proc propertyNotify*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, a: int)) {.importcpp: "propertyNotify.connect".}
 proc geometryChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "geometryChanged.connect".}
 proc geometryShapeChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: TRect)) {.importcpp: "geometryShapeChanged.connect".}
 proc paddingChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: TRect)) {.importcpp: "paddingChanged.connect".}
