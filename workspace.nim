@@ -1,3 +1,5 @@
+import helper
+
 type TClientAreaOption* = distinct int
 var
   PlacementArea* {.importc: "KWin.PlacementArea", nodecl.}: TClientAreaOption
@@ -22,14 +24,14 @@ var
   ElectricNone* {.importc: "KWin.ElectricNone", nodecl.}: TElectricBorder
 var currentDesktop* {.importc: "workspace.currentDesktop", nodecl}: int
 var activeClient* {.importc: "workspace.activeClient", nodecl}: TClient
-var desktopGridSize* {.importc: "workspace.desktopGridSize", nodecl}: QSize
+var desktopGridSize* {.importc: "workspace.desktopGridSize", nodecl}: TSize
 var desktopGridWidth* {.importc: "workspace.desktopGridWidth", nodecl}: int
 var desktopGridHeight* {.importc: "workspace.desktopGridHeight", nodecl}: int
 var workspaceWidth* {.importc: "workspace.workspaceWidth", nodecl}: int
 var workspaceHeight* {.importc: "workspace.workspaceHeight", nodecl}: int
-var workspaceSize* {.importc: "workspace.workspaceSize", nodecl}: QSize
+var workspaceSize* {.importc: "workspace.workspaceSize", nodecl}: TSize
 var desktops* {.importc: "workspace.desktops", nodecl}: int
-var displaySize* {.importc: "workspace.displaySize", nodecl}: QSize
+var displaySize* {.importc: "workspace.displaySize", nodecl}: TSize
 var displayWidth* {.importc: "workspace.displayWidth", nodecl}: int
 var displayHeight* {.importc: "workspace.displayHeight", nodecl}: int
 var activeScreen* {.importc: "workspace.activeScreen", nodecl}: int
@@ -58,22 +60,22 @@ proc activitiesChanged*(callback: proc(id: string)) {.importc: "workspace.activi
 proc activityAdded*(callback: proc(id: string)) {.importc: "workspace.activityAdded.connect"}
 proc activityRemoved*(callback: proc(id: string)) {.importc: "workspace.activityRemoved.connect"}
 proc WorkspaceWrapper*(parent: QObject):  {.importc: "workspace.WorkspaceWrapper"}
-proc desktopGridSize*(): QSize {.importc: "workspace.desktopGridSize"}
+proc desktopGridSize*(): TSize {.importc: "workspace.desktopGridSize"}
 proc desktopGridWidth*(): int {.importc: "workspace.desktopGridWidth"}
 proc desktopGridHeight*(): int {.importc: "workspace.desktopGridHeight"}
 proc workspaceWidth*(): int {.importc: "workspace.workspaceWidth"}
 proc workspaceHeight*(): int {.importc: "workspace.workspaceHeight"}
-proc workspaceSize*(): QSize {.importc: "workspace.workspaceSize"}
+proc workspaceSize*(): TSize {.importc: "workspace.workspaceSize"}
 proc displayWidth*(): int {.importc: "workspace.displayWidth"}
 proc displayHeight*(): int {.importc: "workspace.displayHeight"}
-proc displaySize*(): QSize {.importc: "workspace.displaySize"}
+proc displaySize*(): TSize {.importc: "workspace.displaySize"}
 proc activeScreen*(): int {.importc: "workspace.activeScreen"}
 proc numScreens*(): int {.importc: "workspace.numScreens"}
 proc currentActivity*(): string {.importc: "workspace.currentActivity"}
 proc activityList*(): seq[string] {.importc: "workspace.activityList"}
 proc clientList*(): seq[TClient] {.importc: "workspace.clientList"}
 proc clientArea*(option: TClientAreaOption, screen: int, desktop: int) {.importc: "workspace.clientArea"}
-proc clientArea*(option: TClientAreaOption, point: QPoint, desktop: int) {.importc: "workspace.clientArea"}
+proc clientArea*(option: TClientAreaOption, point: TPoint, desktop: int) {.importc: "workspace.clientArea"}
 proc clientArea*(option: TClientAreaOption, client: TClient) {.importc: "workspace.clientArea"}
 proc desktopName*(desktop: int) {.importc: "workspace.desktopName"}
 proc supportInformation*() {.importc: "workspace.supportInformation"}
@@ -131,6 +133,6 @@ proc slotWindowToDesktopRight*() {.importc: "workspace.slotWindowToDesktopRight"
 proc slotWindowToDesktopLeft*() {.importc: "workspace.slotWindowToDesktopLeft"}
 proc slotWindowToDesktopUp*() {.importc: "workspace.slotWindowToDesktopUp"}
 proc slotWindowToDesktopDown*() {.importc: "workspace.slotWindowToDesktopDown"}
-proc showOutline*(geometry: QRect) {.importc: "workspace.showOutline"}
+proc showOutline*(geometry: TRect) {.importc: "workspace.showOutline"}
 proc showOutline*(x: int, y: int, width: int, height: int) {.importc: "workspace.showOutline"}
 proc hideOutline*() {.importc: "workspace.hideOutline"}

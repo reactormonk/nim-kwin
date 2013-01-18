@@ -1,6 +1,8 @@
+import helper
+
 proc print*(objects: openarray[expr]) {.importc: "print"}
 proc readConfig*(key: string, defaultValue: QVariant) {.importc: "readConfig"}
-proc registerScreenEdge*(border: ElectricBorder, callback: proc()) {.importc: "registerScreenEdge"}
+proc registerScreenEdge*(border: TElectricBorder, callback: proc()) {.importc: "registerScreenEdge"}
 proc registerShortcut*(title, text, keySequence: string, callback: proc()) {.importc: "registerShortcut"}
 proc assert*(value: bool, message: string = "") {.importc: "assert"}
 proc assertTrue*(value: bool, message: string = "") {.importc: "assertTrue"}

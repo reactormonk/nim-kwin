@@ -1,3 +1,5 @@
+import helper
+
 type TFocusPolicy* = distinct int
 var
   ClickToFocus* {.importc: "options.ClickToFocus", nodecl.}: TFocusPolicy

@@ -1,3 +1,4 @@
+import helper
 import toplevel
 
 type TClient = ref object of TToplevel
@@ -8,7 +9,7 @@ type TClient = ref object of TToplevel
   onAllDesktops*: bool
   fullScreen*: bool
   fullScreenable*: bool
-  geometry*: QRect
+  geometry*: TRect
   keepAbove*: bool
   keepBelow*: bool
   maximizable*: bool
@@ -23,10 +24,10 @@ type TClient = ref object of TToplevel
   shade*: bool
   transient*: bool
   transientFor*: TClient
-  basicUnit*: QSize
+  basicUnit*: TSize
   move*: bool
   resize*: bool
-  iconGeometry*: QRect
+  iconGeometry*: TRect
   specialWindow*: bool
   wantsInput*: bool
   icon*: QPixmap
@@ -35,8 +36,8 @@ type TClient = ref object of TToplevel
   skipPager*: bool
   tabGroup*: KWin::TabGroup
   isCurrentTab*: bool
-  minSize*: QSize
-  maxSize*: QSize
+  minSize*: TSize
+  maxSize*: TSize
   noBorder*: bool
   demandsAttention*: bool
   blocksCompositing*: bool
@@ -58,7 +59,7 @@ proc clientMaximizedStateChanged*(client: TClient, callback: proc(c: TClient, h:
 proc clientMinimized*(client: TClient, callback: proc(client: TClient, animate: bool)) {.importcpp: "clientMinimized.connect"}
 proc clientUnminimized*(client: TClient, callback: proc(client: TClient, animate: bool)) {.importcpp: "clientUnminimized.connect"}
 proc clientStartUserMovedResized*(client: TClient, callback: proc(: TClient)) {.importcpp: "clientStartUserMovedResized.connect"}
-proc clientStepUserMovedResized*(client: TClient, callback: proc(: TClient, : QRect)) {.importcpp: "clientStepUserMovedResized.connect"}
+proc clientStepUserMovedResized*(client: TClient, callback: proc(: TClient, : TRect)) {.importcpp: "clientStepUserMovedResized.connect"}
 proc clientFinishUserMovedResized*(client: TClient, callback: proc(: TClient)) {.importcpp: "clientFinishUserMovedResized.connect"}
 proc activeChanged*(client: TClient, callback: proc()) {.importcpp: "activeChanged.connect"}
 proc captionChanged*(client: TClient, callback: proc()) {.importcpp: "captionChanged.connect"}
@@ -109,22 +110,22 @@ proc updateWindowRules*(client: TClient, selection: Rules::Types) {.importcpp: "
 proc updateFullscreenMonitors*(client: TClient, topology: NETFullscreenMonitors) {.importcpp: "updateFullscreenMonitors"}
 proc isSpecialWindow*(client: TClient): bool {.importcpp: "isSpecialWindow"}
 proc hasNETSupport*(client: TClient): bool {.importcpp: "hasNETSupport"}
-proc minSize*(client: TClient): QSize {.importcpp: "minSize"}
-proc maxSize*(client: TClient): QSize {.importcpp: "maxSize"}
-proc basicUnit*(client: TClient): QSize {.importcpp: "basicUnit"}
-proc clientPos*(client: TClient): QPoint {.importcpp: "clientPos"}
-proc clientSize*(client: TClient): QSize {.importcpp: "clientSize"}
-proc inputPos*(client: TClient): QPoint {.importcpp: "inputPos"}
+proc minSize*(client: TClient): TSize {.importcpp: "minSize"}
+proc maxSize*(client: TClient): TSize {.importcpp: "maxSize"}
+proc basicUnit*(client: TClient): TSize {.importcpp: "basicUnit"}
+proc clientPos*(client: TClient): TPoint {.importcpp: "clientPos"}
+proc clientSize*(client: TClient): TSize {.importcpp: "clientSize"}
+proc inputPos*(client: TClient): TPoint {.importcpp: "inputPos"}
 proc windowEvent*(client: TClient, e: XEvent): bool {.importcpp: "windowEvent"}
 proc eventFilter*(client: TClient, o: QObject, e: QEvent): bool {.importcpp: "eventFilter"}
 proc windowType*(client: TClient, direct: bool, supported_types: int): NET::WindowType {.importcpp: "windowType"}
 proc manage*(client: TClient, w: Window, isMapped: bool): bool {.importcpp: "manage"}
 proc releaseWindow*(client: TClient, on_shutdown: bool) {.importcpp: "releaseWindow"}
 proc destroyClient*(client: TClient) {.importcpp: "destroyClient"}
-proc adjustedSize*(client: TClient, : QSize, mode: Sizemode): QSize {.importcpp: "adjustedSize"}
-proc adjustedSize*(client: TClient): QSize {.importcpp: "adjustedSize"}
+proc adjustedSize*(client: TClient, : TSize, mode: Sizemode): TSize {.importcpp: "adjustedSize"}
+proc adjustedSize*(client: TClient): TSize {.importcpp: "adjustedSize"}
 proc icon*(client: TClient): QPixmap {.importcpp: "icon"}
-proc icon*(client: TClient, size: QSize): QPixmap {.importcpp: "icon"}
+proc icon*(client: TClient, size: TSize): QPixmap {.importcpp: "icon"}
 proc miniIcon*(client: TClient): QPixmap {.importcpp: "miniIcon"}
 proc bigIcon*(client: TClient): QPixmap {.importcpp: "bigIcon"}
 proc hugeIcon*(client: TClient): QPixmap {.importcpp: "hugeIcon"}
@@ -147,18 +148,18 @@ proc setShade*(client: TClient, mode: ShadeMode) {.importcpp: "setShade"}
 proc isShadeable*(client: TClient): bool {.importcpp: "isShadeable"}
 proc isMinimized*(client: TClient): bool {.importcpp: "isMinimized"}
 proc isMaximizable*(client: TClient): bool {.importcpp: "isMaximizable"}
-proc geometryRestore*(client: TClient): QRect {.importcpp: "geometryRestore"}
+proc geometryRestore*(client: TClient): TRect {.importcpp: "geometryRestore"}
 proc maximizeMode*(client: TClient): MaximizeMode {.importcpp: "maximizeMode"}
 proc quickTileMode*(client: TClient): QuickTileMode {.importcpp: "quickTileMode"}
 proc isMinimizable*(client: TClient): bool {.importcpp: "isMinimizable"}
 proc setMaximize*(client: TClient, vertically: bool, horizontally: bool) {.importcpp: "setMaximize"}
-proc iconGeometry*(client: TClient): QRect {.importcpp: "iconGeometry"}
+proc iconGeometry*(client: TClient): TRect {.importcpp: "iconGeometry"}
 proc setFullScreen*(client: TClient, set: bool, user: bool) {.importcpp: "setFullScreen"}
 proc isFullScreen*(client: TClient): bool {.importcpp: "isFullScreen"}
 proc isFullScreenable*(client: TClient, fullscreen_hack: bool): bool {.importcpp: "isFullScreenable"}
 proc isActiveFullScreen*(client: TClient): bool {.importcpp: "isActiveFullScreen"}
 proc userCanSetFullScreen*(client: TClient): bool {.importcpp: "userCanSetFullScreen"}
-proc geometryFSRestore*(client: TClient): QRect {.importcpp: "geometryFSRestore"}
+proc geometryFSRestore*(client: TClient): TRect {.importcpp: "geometryFSRestore"}
 proc fullScreenMode*(client: TClient): int {.importcpp: "fullScreenMode"}
 proc noBorder*(client: TClient): bool {.importcpp: "noBorder"}
 proc setNoBorder*(client: TClient, set: bool) {.importcpp: "setNoBorder"}
@@ -197,20 +198,20 @@ proc checkBorderSizes*(client: TClient, also_resize: bool): bool {.importcpp: "c
 proc triggerDecorationRepaint*(client: TClient) {.importcpp: "triggerDecorationRepaint"}
 proc updateShape*(client: TClient) {.importcpp: "updateShape"}
 proc setGeometry*(client: TClient, x: int, y: int, w: int, h: int, force: ForceGeometry_t) {.importcpp: "setGeometry"}
-proc setGeometry*(client: TClient, r: QRect, force: ForceGeometry_t) {.importcpp: "setGeometry"}
+proc setGeometry*(client: TClient, r: TRect, force: ForceGeometry_t) {.importcpp: "setGeometry"}
 proc move*(client: TClient, x: int, y: int, force: ForceGeometry_t) {.importcpp: "move"}
-proc move*(client: TClient, p: QPoint, force: ForceGeometry_t) {.importcpp: "move"}
+proc move*(client: TClient, p: TPoint, force: ForceGeometry_t) {.importcpp: "move"}
 proc plainResize*(client: TClient, w: int, h: int, force: ForceGeometry_t) {.importcpp: "plainResize"}
-proc plainResize*(client: TClient, s: QSize, force: ForceGeometry_t) {.importcpp: "plainResize"}
+proc plainResize*(client: TClient, s: TSize, force: ForceGeometry_t) {.importcpp: "plainResize"}
 proc resizeWithChecks*(client: TClient, w: int, h: int, force: ForceGeometry_t) {.importcpp: "resizeWithChecks"}
-proc resizeWithChecks*(client: TClient, s: QSize, force: ForceGeometry_t) {.importcpp: "resizeWithChecks"}
-proc keepInArea*(client: TClient, area: QRect, partial: bool) {.importcpp: "keepInArea"}
+proc resizeWithChecks*(client: TClient, s: TSize, force: ForceGeometry_t) {.importcpp: "resizeWithChecks"}
+proc keepInArea*(client: TClient, area: TRect, partial: bool) {.importcpp: "keepInArea"}
 proc setElectricBorderMode*(client: TClient, mode: QuickTileMode) {.importcpp: "setElectricBorderMode"}
 proc electricBorderMode*(client: TClient): QuickTileMode {.importcpp: "electricBorderMode"}
 proc setElectricBorderMaximizing*(client: TClient, maximizing: bool) {.importcpp: "setElectricBorderMaximizing"}
 proc isElectricBorderMaximizing*(client: TClient): bool {.importcpp: "isElectricBorderMaximizing"}
-proc electricBorderMaximizeGeometry*(client: TClient, pos: QPoint, desktop: int): QRect {.importcpp: "electricBorderMaximizeGeometry"}
-proc sizeForClientSize*(client: TClient, : QSize, mode: Sizemode, noframe: bool): QSize {.importcpp: "sizeForClientSize"}
+proc electricBorderMaximizeGeometry*(client: TClient, pos: TPoint, desktop: int): TRect {.importcpp: "electricBorderMaximizeGeometry"}
+proc sizeForClientSize*(client: TClient, : TSize, mode: Sizemode, noframe: bool): TSize {.importcpp: "sizeForClientSize"}
 proc setQuickTileMode*(client: TClient, mode: QuickTileMode, keyboard: bool) {.importcpp: "setQuickTileMode"}
 proc growHorizontal*(client: TClient) {.importcpp: "growHorizontal"}
 proc shrinkHorizontal*(client: TClient) {.importcpp: "shrinkHorizontal"}
@@ -220,8 +221,8 @@ proc providesContextHelp*(client: TClient): bool {.importcpp: "providesContextHe
 proc shortcut*(client: TClient): KShortcut {.importcpp: "shortcut"}
 proc setShortcut*(client: TClient, cut: string) {.importcpp: "setShortcut"}
 proc mouseButtonToWindowOperation*(client: TClient, button: Qt::MouseButtons): WindowOperation {.importcpp: "mouseButtonToWindowOperation"}
-proc performMouseCommand*(client: TClient, : Options::MouseCommand, globalPos: QPoint, handled: bool): bool {.importcpp: "performMouseCommand"}
-proc adjustedClientArea*(client: TClient, desktop: QRect, area: QRect): QRect {.importcpp: "adjustedClientArea"}
+proc performMouseCommand*(client: TClient, : Options::MouseCommand, globalPos: TPoint, handled: bool): bool {.importcpp: "performMouseCommand"}
+proc adjustedClientArea*(client: TClient, desktop: TRect, area: TRect): TRect {.importcpp: "adjustedClientArea"}
 proc colormap*(client: TClient): Colormap {.importcpp: "colormap"}
 proc updateVisibility*(client: TClient) {.importcpp: "updateVisibility"}
 proc hideClient*(client: TClient, hide: bool) {.importcpp: "hideClient"}
@@ -236,12 +237,12 @@ proc updateCaption*(client: TClient) {.importcpp: "updateCaption"}
 proc keyPressEvent*(client: TClient, key_code: int) {.importcpp: "keyPressEvent"}
 proc updateMouseGrab*(client: TClient) {.importcpp: "updateMouseGrab"}
 proc moveResizeGrabWindow*(client: TClient): Window {.importcpp: "moveResizeGrabWindow"}
-proc calculateGravitation*(client: TClient, invert: bool, gravity: int): QPoint {.importcpp: "calculateGravitation"}
+proc calculateGravitation*(client: TClient, invert: bool, gravity: int): TPoint {.importcpp: "calculateGravitation"}
 proc NETMoveResize*(client: TClient, x_root: int, y_root: int, direction: NET::Direction) {.importcpp: "NETMoveResize"}
 proc NETMoveResizeWindow*(client: TClient, flags: int, x: int, y: int, width: int, height: int) {.importcpp: "NETMoveResizeWindow"}
 proc restackWindow*(client: TClient, above: Window, detail: int, source: NET::RequestSource, timestamp: Time, send_event: bool) {.importcpp: "restackWindow"}
 proc gotPing*(client: TClient, timestamp: Time) {.importcpp: "gotPing"}
-proc checkWorkspacePosition*(client: TClient, oldGeometry: QRect, oldDesktop: int) {.importcpp: "checkWorkspacePosition"}
+proc checkWorkspacePosition*(client: TClient, oldGeometry: TRect, oldDesktop: int) {.importcpp: "checkWorkspacePosition"}
 proc updateUserTime*(client: TClient, time: Time) {.importcpp: "updateUserTime"}
 proc userTime*(client: TClient): Time {.importcpp: "userTime"}
 proc hasUserTimeSupport*(client: TClient): bool {.importcpp: "hasUserTimeSupport"}
@@ -262,7 +263,7 @@ proc tabGroup*(client: TClient): TabGroup {.importcpp: "tabGroup"}
 proc tabBefore*(client: TClient, other: TClient, activate: bool): bool {.importcpp: "tabBefore"}
 proc tabBehind*(client: TClient, other: TClient, activate: bool): bool {.importcpp: "tabBehind"}
 proc syncTabGroupFor*(client: TClient, property: string, fromThisClient: bool = false) {.importcpp: "syncTabGroupFor"}
-proc untab*(client: TClient, toGeometry: QRect, clientRemoved: bool) {.importcpp: "untab"}
+proc untab*(client: TClient, toGeometry: TRect, clientRemoved: bool) {.importcpp: "untab"}
 proc setTabGroup*(client: TClient, group: TabGroup) {.importcpp: "setTabGroup"}
 proc setClientShown*(client: TClient, shown: bool) {.importcpp: "setClientShown"}
 proc dontMoveResize*(client: TClient) {.importcpp: "dontMoveResize"}
@@ -275,11 +276,11 @@ proc paddingLeft*(client: TClient): int {.importcpp: "paddingLeft"}
 proc paddingRight*(client: TClient): int {.importcpp: "paddingRight"}
 proc paddingTop*(client: TClient): int {.importcpp: "paddingTop"}
 proc paddingBottom*(client: TClient): int {.importcpp: "paddingBottom"}
-proc decorationRect*(client: TClient): QRect {.importcpp: "decorationRect"}
-proc transparentRect*(client: TClient): QRect {.importcpp: "transparentRect"}
+proc decorationRect*(client: TClient): TRect {.importcpp: "decorationRect"}
+proc transparentRect*(client: TClient): TRect {.importcpp: "transparentRect"}
 proc decorationPendingRegion*(client: TClient): QRegion {.importcpp: "decorationPendingRegion"}
 proc decorationHasAlpha*(client: TClient): bool {.importcpp: "decorationHasAlpha"}
-proc layoutDecorationRects*(client: TClient, left, top, right, bottom: QRect, mode: CoordinateMode) {.importcpp: "layoutDecorationRects"}
+proc layoutDecorationRects*(client: TClient, left, top, right, bottom: TRect, mode: CoordinateMode) {.importcpp: "layoutDecorationRects"}
 proc isFirstInTabBox*(client: TClient): bool {.importcpp: "isFirstInTabBox"}
 proc setFirstInTabBox*(client: TClient, enable: bool) {.importcpp: "setFirstInTabBox"}
 proc updateFirstInTabBox*(client: TClient) {.importcpp: "updateFirstInTabBox"}
