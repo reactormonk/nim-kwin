@@ -148,6 +148,7 @@ TypeConv = {
             "Q_SCRIPTABLE" => :void,
             "()" => :void,
             "void" => :void,
+            "Q_INVOKABLE" => :void,
             "uint" => "int",
             "KWin::Toplevel" => "TToplevel",
             "KWin::Deleted" => "TDeleted",

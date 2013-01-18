@@ -251,10 +251,10 @@ proc strutRect*(client: TClient, area: StrutArea): StrutRect {.importcpp: "strut
 proc strutRects*(client: TClient): StrutRects {.importcpp: "strutRects".}
 proc hasStrut*(client: TClient): bool {.importcpp: "hasStrut".}
 proc tabGroup*(client: TClient): TabGroup {.importcpp: "tabGroup".}
-proc tabBefore*(client: TClient, other: Client, activate: bool): Q_INVOKABLE {.importcpp: "tabBefore".}
-proc tabBehind*(client: TClient, other: Client, activate: bool): Q_INVOKABLE {.importcpp: "tabBehind".}
-proc syncTabGroupFor*(client: TClient, property: string, fromThisClient: bool): Q_INVOKABLE {.importcpp: "syncTabGroupFor".}
-proc untab*(client: TClient, toGeometry: TRect, clientRemoved: bool): Q_INVOKABLE {.importcpp: "untab".}
+proc tabBefore*(client: TClient, other: Client, activate: bool) {.importcpp: "tabBefore".}
+proc tabBehind*(client: TClient, other: Client, activate: bool) {.importcpp: "tabBehind".}
+proc syncTabGroupFor*(client: TClient, property: string, fromThisClient: bool) {.importcpp: "syncTabGroupFor".}
+proc untab*(client: TClient, toGeometry: TRect, clientRemoved: bool) {.importcpp: "untab".}
 proc setTabGroup*(client: TClient, group: TabGroup) {.importcpp: "setTabGroup".}
 proc setClientShown*(client: TClient, shown: bool) {.importcpp: "setClientShown".}
 proc dontMoveResize*(client: TClient) {.importcpp: "dontMoveResize".}
