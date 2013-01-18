@@ -97,7 +97,6 @@ proc resourceName*(toplevel: TToplevel): string {.importcpp: "resourceName".}
 proc resourceClass*(toplevel: TToplevel): string {.importcpp: "resourceClass".}
 proc wmCommand*(toplevel: TToplevel): string {.importcpp: "wmCommand".}
 proc wmClientMachine*(toplevel: TToplevel, use_localhost: bool): string {.importcpp: "wmClientMachine".}
-proc windowPixmap*(toplevel: TToplevel, allow_create: bool): Pixmap {.importcpp: "windowPixmap".}
 proc readyForPainting*(toplevel: TToplevel): bool {.importcpp: "readyForPainting".}
 proc visual*(toplevel: TToplevel): Visual {.importcpp: "visual".}
 proc shape*(toplevel: TToplevel): bool {.importcpp: "shape".}
