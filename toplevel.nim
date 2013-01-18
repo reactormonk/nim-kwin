@@ -47,7 +47,7 @@ proc propertyNotify*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, a:
 proc geometryChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "geometryChanged.connect".}
 proc geometryShapeChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: TRect)) {.importcpp: "geometryShapeChanged.connect".}
 proc paddingChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, old: TRect)) {.importcpp: "paddingChanged.connect".}
-proc windowClosed*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, deleted: KWin::Deleted)) {.importcpp: "windowClosed.connect".}
+proc windowClosed*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, deleted: TDeleted)) {.importcpp: "windowClosed.connect".}
 proc windowShown*(toplevel: TToplevel, callback: proc(toplevel: TToplevel)) {.importcpp: "windowShown.connect".}
 proc shapedChanged*(toplevel: TToplevel, callback: proc()) {.importcpp: "shapedChanged.connect".}
 proc needsRepaint*(toplevel: TToplevel, callback: proc()) {.importcpp: "needsRepaint.connect".}

@@ -150,6 +150,7 @@ TypeConv = {
             "void" => :void,
             "uint" => "int",
             "KWin::Toplevel" => "TToplevel",
+            "KWin::Deleted" => "TDeleted",
             "QPoint" => "TPoint",
             "QSize" => "TSize",
             "QRect" => "TRect",
