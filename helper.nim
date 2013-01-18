@@ -1,13 +1,13 @@
 type TWinId* = int
-type TRect* ref object
+type TRect* = ref object
   x*: int
   y*: int
   width*: int
   height*: int
-type TPoint* ref object
+type TPoint* = ref object
   x*: int
   y*: int
-type TSize* ref object
+type TSize* = ref object
   w*: int
   h*: int
   
