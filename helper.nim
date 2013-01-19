@@ -14,6 +14,8 @@ type TSize* = ref object
 type TDeleted* = ref object # TODO
 
 type TTabGroup* = ref object # TODO
+
+type QPixmap* = ref object # TODO
   
 proc initRect*(x, y, width, height: int): TRect =
   new(result)

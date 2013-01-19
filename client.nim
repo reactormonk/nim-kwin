@@ -49,15 +49,14 @@ type TCoordinateMode* = distinct int
 var
   DecorationRelative* {.importc: "DecorationRelative", nodecl.}: TCoordinateMode
   WindowRelative* {.importc: "WindowRelative", nodecl.}: TCoordinateMode
-proc clientManaging*(client: TClient, callback: proc(: TClient)) {.importcpp: "clientManaging.connect".}
-proc clientFullScreenSet*(client: TClient, callback: proc(: TClient, : bool, : bool)) {.importcpp: "clientFullScreenSet.connect".}
-proc clientMaximizedStateChanged*(client: TClient, callback: proc(: TClient, : KDecorationDefines::MaximizeMode)) {.importcpp: "clientMaximizedStateChanged.connect".}
-proc clientMaximizedStateChanged*(client: TClient, callback: proc(c: TClient, h: bool, v: bool)) {.importcpp: "clientMaximizedStateChanged.connect".}
+proc clientManaging*(client: TClient, callback: proc(client: TClient)) {.importcpp: "clientManaging.connect".}
+proc clientFullScreenSet*(client: TClient, callback: proc(client: TClient, fullscreen: bool, user: bool)) {.importcpp: "clientFullScreenSet.connect".}
+proc clientMaximizedStateChanged*(client: TClient, callback: proc(client: TClient, h: bool, v: bool)) {.importcpp: "clientMaximizedStateChanged.connect".}
 proc clientMinimized*(client: TClient, callback: proc(client: TClient, animate: bool)) {.importcpp: "clientMinimized.connect".}
 proc clientUnminimized*(client: TClient, callback: proc(client: TClient, animate: bool)) {.importcpp: "clientUnminimized.connect".}
-proc clientStartUserMovedResized*(client: TClient, callback: proc(: TClient)) {.importcpp: "clientStartUserMovedResized.connect".}
-proc clientStepUserMovedResized*(client: TClient, callback: proc(: TClient, : TRect)) {.importcpp: "clientStepUserMovedResized.connect".}
-proc clientFinishUserMovedResized*(client: TClient, callback: proc(: TClient)) {.importcpp: "clientFinishUserMovedResized.connect".}
+proc clientStartUserMovedResized*(client: TClient, callback: proc(client: TClient)) {.importcpp: "clientStartUserMovedResized.connect".}
+proc clientStepUserMovedResized*(client: TClient, callback: proc(client: TClient, rect: TRect)) {.importcpp: "clientStepUserMovedResized.connect".}
+proc clientFinishUserMovedResized*(client: TClient, callback: proc(client: TClient)) {.importcpp: "clientFinishUserMovedResized.connect".}
 proc activeChanged*(client: TClient, callback: proc()) {.importcpp: "activeChanged.connect".}
 proc captionChanged*(client: TClient, callback: proc()) {.importcpp: "captionChanged.connect".}
 proc desktopChanged*(client: TClient, callback: proc()) {.importcpp: "desktopChanged.connect".}
