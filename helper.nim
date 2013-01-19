@@ -18,6 +18,8 @@ type TTabGroup* = ref object # TODO
 type QPixmap* = ref object # TODO
 
 type QVariant* = ref object # TODO
+
+type TWindowOperation* = ref object # TODO
   
 proc initRect*(x, y, width, height: int): TRect =
   new(result)
