@@ -79,16 +79,14 @@ proc appMenuAvailable*(client: TClient, callback: proc()) {.importcpp: "appMenuA
 proc appMenuUnavailable*(client: TClient, callback: proc()) {.importcpp: "appMenuUnavailable.connect".}
 proc demandsAttentionChanged*(client: TClient, callback: proc()) {.importcpp: "demandsAttentionChanged.connect".}
 proc blockingCompositingChanged*(client: TClient, callback: proc(client: TClient)) {.importcpp: "blockingCompositingChanged.connect".}
-proc Client*(client: TClient, ws: Workspace):  {.importcpp: "Client".}
-proc transientFor*(client: TClient): Client {.importcpp: "transientFor".}
-proc transientFor*(client: TClient): Client {.importcpp: "transientFor".}
+proc transientFor*(client: TClient): TClient {.importcpp: "transientFor".}
 proc isTransient*(client: TClient): bool {.importcpp: "isTransient".}
 proc groupTransient*(client: TClient): bool {.importcpp: "groupTransient".}
 proc wasOriginallyGroupTransient*(client: TClient): bool {.importcpp: "wasOriginallyGroupTransient".}
-proc mainClients*(client: TClient): ClientList {.importcpp: "mainClients".}
-proc allMainClients*(client: TClient): ClientList {.importcpp: "allMainClients".}
+proc mainClients*(client: TClient): seq[TClient] {.importcpp: "mainClients".}
+proc allMainClients*(client: TClient): seq[TClient] {.importcpp: "allMainClients".}
 proc hasTransient*(client: TClient, c: Client, indirect: bool): bool {.importcpp: "hasTransient".}
-proc transients*(client: TClient): ClientList {.importcpp: "transients".}
+proc transients*(client: TClient): seq[TClient] {.importcpp: "transients".}
 proc findModal*(client: TClient, allow_itself: bool): Client {.importcpp: "findModal".}
 proc group*(client: TClient): Group {.importcpp: "group".}
 proc group*(client: TClient): Group {.importcpp: "group".}
