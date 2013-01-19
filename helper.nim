@@ -12,6 +12,8 @@ type TSize* = ref object
   h*: int
 
 type TDeleted* = ref object # TODO
+
+type TTabGroup* = ref object # TODO
   
 proc initRect*(x, y, width, height: int): TRect =
   new(result)

@@ -34,7 +34,7 @@ type TClient = ref object of TToplevel
   skipSwitcher*: bool
   skipTaskbar*: bool
   skipPager*: bool
-  tabGroup*: KWin::TabGroup
+  tabGroup*: TTabGroup
   isCurrentTab*: bool
   minSize*: TSize
   maxSize*: TSize
