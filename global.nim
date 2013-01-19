@@ -1,4 +1,5 @@
 import helper
+import workspace
 
 proc print*(objects: openarray[expr]) {.importc: "print"}
 proc readConfig*(key: string, defaultValue: QVariant) {.importc: "readConfig"}
@@ -10,5 +11,5 @@ proc assertFalse*(value: bool, message: string = "") {.importc: "assertFalse"}
 proc assertEquals*(expected, actual: QVariant, message: string = "") {.importc: "assertEquals"}
 proc assertNull*(value: QVariant, message: string = "") {.importc: "assertNull"}
 proc assertNotNull*(value: QVariant, message: string = "") {.importc: "assertNotNull"}
-proc callDBus*(service, path, interface, method: string, arg: openarray[QVariant], callback: proc()) {.importc: "callDBus"}
+proc callDBus*(service, path, interface, meth: string, args: openarray[QVariant], callback: proc()) {.importc: "callDBus"}
 proc registerUserActionsMenu*(callback: proc()) {.importc: "registerUserActionsMenu"}

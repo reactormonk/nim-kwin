@@ -1,7 +1,7 @@
 import helper
 import toplevel
 
-type TClient = ref object of TToplevel
+type TClient* = ref object of TToplevel
   active*: bool
   caption*: string
   closeable*: bool
@@ -136,10 +136,6 @@ proc checkBorderSizes*(client: TClient, also_resize: bool): bool {.importcpp: "c
 proc triggerDecorationRepaint*(client: TClient) {.importcpp: "triggerDecorationRepaint".}
 proc updateShape*(client: TClient) {.importcpp: "updateShape".}
 proc electricBorderMaximizeGeometry*(client: TClient, pos: TPoint, desktop: int): TRect {.importcpp: "electricBorderMaximizeGeometry".}
-proc growHorizontal*(client: TClient) {.importcpp: "growHorizontal".}
-proc shrinkHorizontal*(client: TClient) {.importcpp: "shrinkHorizontal".}
-proc growVertical*(client: TClient) {.importcpp: "growVertical".}
-proc shrinkVertical*(client: TClient) {.importcpp: "shrinkVertical".}
 proc providesContextHelp*(client: TClient): bool {.importcpp: "providesContextHelp".}
 proc tabGroup*(client: TClient): TTabGroup {.importcpp: "tabGroup".}
 proc tabBefore*(client: TClient, other: TClient, activate: bool) {.importcpp: "tabBefore".}
@@ -151,12 +147,6 @@ proc setClientShown*(client: TClient, shown: bool) {.importcpp: "setClientShown"
 proc dontMoveResize*(client: TClient) {.importcpp: "dontMoveResize".}
 proc isCurrentTab*(client: TClient): bool {.importcpp: "isCurrentTab".}
 proc hasOffscreenXineramaStrut*(client: TClient): bool {.importcpp: "hasOffscreenXineramaStrut".}
-proc isMove*(client: TClient): bool {.importcpp: "isMove".}
-proc isResize*(client: TClient): bool {.importcpp: "isResize".}
-proc paddingLeft*(client: TClient): int {.importcpp: "paddingLeft".}
-proc paddingRight*(client: TClient): int {.importcpp: "paddingRight".}
-proc paddingTop*(client: TClient): int {.importcpp: "paddingTop".}
-proc paddingBottom*(client: TClient): int {.importcpp: "paddingBottom".}
 proc decorationRect*(client: TClient): TRect {.importcpp: "decorationRect".}
 proc transparentRect*(client: TClient): TRect {.importcpp: "transparentRect".}
 proc decorationHasAlpha*(client: TClient): bool {.importcpp: "decorationHasAlpha".}
