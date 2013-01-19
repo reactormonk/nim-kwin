@@ -5,11 +5,8 @@ type TClient = ref object of TToplevel
   active*: bool
   caption*: string
   closeable*: bool
-  desktop*: int
-  onAllDesktops*: bool
   fullScreen*: bool
   fullScreenable*: bool
-  geometry*: TRect
   keepAbove*: bool
   keepBelow*: bool
   maximizable*: bool

@@ -1,6 +1,6 @@
 import helper
 
-type TToplevel = ref object
+type TToplevel* = ref object {.inheritable.}
   alpha*: bool
   frameId*: TWinId
   geometry*: TRect
@@ -55,8 +55,6 @@ proc geometry*(toplevel: TToplevel): TRect {.importcpp: "geometry".}
 proc size*(toplevel: TToplevel): TSize {.importcpp: "size".}
 proc pos*(toplevel: TToplevel): TPoint {.importcpp: "pos".}
 proc rect*(toplevel: TToplevel): TRect {.importcpp: "rect".}
-proc x*(toplevel: TToplevel): int {.importcpp: "x".}
-proc y*(toplevel: TToplevel): int {.importcpp: "y".}
 proc width*(toplevel: TToplevel): int {.importcpp: "width".}
 proc height*(toplevel: TToplevel): int {.importcpp: "height".}
 proc isOnScreen*(toplevel: TToplevel, screen: int): bool {.importcpp: "isOnScreen".}
