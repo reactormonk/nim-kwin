@@ -1,5 +1,5 @@
-import helper
-import client
+import kwinhelper
+import kwinclient
 
 type TClientAreaOption* = distinct int
 var
@@ -65,3 +65,6 @@ proc decorationRect*(client: TClient): TRect {.importcpp: "decorationRect".}
 proc transparentRect*(client: TClient): TRect {.importcpp: "transparentRect".}
 proc decorationHasAlpha*(client: TClient): bool {.importcpp: "decorationHasAlpha".}
 proc closeWindow*(client: TClient) {.importcpp: "closeWindow".}
+proc clientArea*(option: TClientAreaOption, screen, desktop: int): TRect {.importc: "workspace.clientArea"}
+proc clientArea*(option: TClientAreaOption, point: TPoint, desktop: int): TRect {.importc: "workspace.clientArea"}
+proc clientArea*(option: TClientAreaOption, client: TClient): TRect {.importc: "workspace.clientArea"}

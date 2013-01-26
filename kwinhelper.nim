@@ -17,7 +17,9 @@ type TTabGroup* = ref object # TODO
 
 type QPixmap* = ref object # TODO
 
-type QVariant* = ref object # TODO
+type QVariant* = ref object
+# Will break at some point. Use repr or $ in that case.
+converter toQVariant(obj: expr): QVariant = result = cast[QVariant](obj)
 
 type TWindowOperation* = ref object # TODO
   

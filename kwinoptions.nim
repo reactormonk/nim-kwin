@@ -1,4 +1,4 @@
-import helper
+import kwinhelper
 
 type TFocusPolicy* = distinct int
 var

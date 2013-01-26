@@ -1,4 +1,4 @@
-import helper
+import kwinhelper
 
 type TToplevel* = ref object {.inheritable.}
   alpha*: bool
