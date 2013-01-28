@@ -37,8 +37,8 @@ var displayWidth* {.importc: "workspace.displayWidth", nodecl}: int
 var displayHeight* {.importc: "workspace.displayHeight", nodecl}: int
 var activeScreen* {.importc: "workspace.activeScreen", nodecl}: int
 var numScreens* {.importc: "workspace.numScreens", nodecl}: int
-var currentActivity* {.importc: "workspace.currentActivity", nodecl}: string
-var activities* {.importc: "workspace.activities", nodecl}: seq[string]
+var currentActivity* {.importc: "workspace.currentActivity", nodecl}: cstring
+var activities* {.importc: "workspace.activities", nodecl}: seq[cstring]
 proc isMinimized*(client: TClient): bool {.importcpp: "isMinimized".}
 proc isMaximizable*(client: TClient): bool {.importcpp: "isMaximizable".}
 proc geometryRestore*(client: TClient): TRect {.importcpp: "geometryRestore".}
@@ -56,7 +56,7 @@ proc providesContextHelp*(client: TClient): bool {.importcpp: "providesContextHe
 proc tabGroup*(client: TClient): TTabGroup {.importcpp: "tabGroup".}
 proc tabBefore*(client: TClient, other: TClient, activate: bool) {.importcpp: "tabBefore".}
 proc tabBehind*(client: TClient, other: TClient, activate: bool) {.importcpp: "tabBehind".}
-proc syncTabGroupFor*(client: TClient, property: string, fromThisClient: bool) {.importcpp: "syncTabGroupFor".}
+proc syncTabGroupFor*(client: TClient, property: cstring, fromThisClient: bool) {.importcpp: "syncTabGroupFor".}
 proc untab*(client: TClient, toGeometry: TRect, clientRemoved: bool) {.importcpp: "untab".}
 proc setTabGroup*(client: TClient, group: TTabGroup) {.importcpp: "setTabGroup".}
 proc setClientShown*(client: TClient, shown: bool) {.importcpp: "setClientShown".}
