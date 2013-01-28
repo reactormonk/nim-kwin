@@ -1,43 +1,43 @@
 import kwinhelper, kwintoplevel
 
 type TClient* = ref object of TToplevel
-  active*: bool
-  caption*: string
-  closeable*: bool
-  fullScreen*: bool
-  fullScreenable*: bool
-  keepAbove*: bool
-  keepBelow*: bool
-  maximizable*: bool
-  minimizable*: bool
-  minimized*: bool
-  modal*: bool
-  moveable*: bool
-  moveableAcrossScreens*: bool
-  providesContextHelp*: bool
-  resizeable*: bool
-  shadeable*: bool
-  shade*: bool
-  transient*: bool
-  transientFor*: TClient
-  basicUnit*: TSize
-  move*: bool
-  resize*: bool
-  iconGeometry*: TRect
-  specialWindow*: bool
-  wantsInput*: bool
-  icon*: QPixmap
-  skipSwitcher*: bool
-  skipTaskbar*: bool
-  skipPager*: bool
-  tabGroup*: TTabGroup
-  isCurrentTab*: bool
-  minSize*: TSize
-  maxSize*: TSize
-  noBorder*: bool
-  demandsAttention*: bool
-  blocksCompositing*: bool
-  decorationHasAlpha*: bool
+  active* {.importc: "active".}: bool 
+  caption* {.importc: "caption".}: cstring 
+  closeable* {.importc: "closeable".}: bool 
+  fullScreen* {.importc: "fullScreen".}: bool 
+  fullScreenable* {.importc: "fullScreenable".}: bool 
+  keepAbove* {.importc: "keepAbove".}: bool 
+  keepBelow* {.importc: "keepBelow".}: bool 
+  maximizable* {.importc: "maximizable".}: bool 
+  minimizable* {.importc: "minimizable".}: bool 
+  minimized* {.importc: "minimized".}: bool 
+  modal* {.importc: "modal".}: bool 
+  moveable* {.importc: "moveable".}: bool 
+  moveableAcrossScreens* {.importc: "moveableAcrossScreens".}: bool 
+  providesContextHelp* {.importc: "providesContextHelp".}: bool 
+  resizeable* {.importc: "resizeable".}: bool 
+  shadeable* {.importc: "shadeable".}: bool 
+  shade* {.importc: "shade".}: bool 
+  transient* {.importc: "transient".}: bool 
+  transientFor* {.importc: "transientFor".}: TClient 
+  basicUnit* {.importc: "basicUnit".}: TSize 
+  move* {.importc: "move".}: bool 
+  resize* {.importc: "resize".}: bool 
+  iconGeometry* {.importc: "iconGeometry".}: TRect 
+  specialWindow* {.importc: "specialWindow".}: bool 
+  wantsInput* {.importc: "wantsInput".}: bool 
+  icon* {.importc: "icon".}: QPixmap 
+  skipSwitcher* {.importc: "skipSwitcher".}: bool 
+  skipTaskbar* {.importc: "skipTaskbar".}: bool 
+  skipPager* {.importc: "skipPager".}: bool 
+  tabGroup* {.importc: "tabGroup".}: TTabGroup 
+  isCurrentTab* {.importc: "isCurrentTab".}: bool 
+  minSize* {.importc: "minSize".}: TSize 
+  maxSize* {.importc: "maxSize".}: TSize 
+  noBorder* {.importc: "noBorder".}: bool 
+  demandsAttention* {.importc: "demandsAttention".}: bool 
+  blocksCompositing* {.importc: "blocksCompositing".}: bool 
+  decorationHasAlpha* {.importc: "decorationHasAlpha".}: bool 
 type TSizemode* = distinct int
 var
   SizemodeAny* {.importc: "SizemodeAny", nodecl.}: TSizemode
@@ -101,7 +101,7 @@ proc icon*(client: TClient, size: TSize): QPixmap {.importcpp: "icon".}
 proc miniIcon*(client: TClient): QPixmap {.importcpp: "miniIcon".}
 proc bigIcon*(client: TClient): QPixmap {.importcpp: "bigIcon".}
 proc hugeIcon*(client: TClient): QPixmap {.importcpp: "hugeIcon".}
-proc activities*(client: TClient): seq[string] {.importcpp: "activities".}
+proc activities*(client: TClient): seq[cstring] {.importcpp: "activities".}
 proc updateActivities*(client: TClient, includeTransients: bool) {.importcpp: "updateActivities".}
 proc iconGeometry*(client: TClient): TRect {.importcpp: "iconGeometry".}
 proc setFullScreen*(client: TClient, set: bool, user: bool) {.importcpp: "setFullScreen".}
@@ -139,7 +139,7 @@ proc providesContextHelp*(client: TClient): bool {.importcpp: "providesContextHe
 proc tabGroup*(client: TClient): TTabGroup {.importcpp: "tabGroup".}
 proc tabBefore*(client: TClient, other: TClient, activate: bool) {.importcpp: "tabBefore".}
 proc tabBehind*(client: TClient, other: TClient, activate: bool) {.importcpp: "tabBehind".}
-proc syncTabGroupFor*(client: TClient, property: string, fromThisClient: bool) {.importcpp: "syncTabGroupFor".}
+proc syncTabGroupFor*(client: TClient, property: cstring, fromThisClient: bool) {.importcpp: "syncTabGroupFor".}
 proc untab*(client: TClient, toGeometry: TRect, clientRemoved: bool) {.importcpp: "untab".}
 proc setTabGroup*(client: TClient, group: TTabGroup) {.importcpp: "setTabGroup".}
 proc setClientShown*(client: TClient, shown: bool) {.importcpp: "setClientShown".}

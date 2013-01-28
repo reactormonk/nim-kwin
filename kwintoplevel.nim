@@ -1,46 +1,46 @@
 import kwinhelper
 
 type TToplevel* = ref object {.inheritable.}
-  alpha*: bool
-  frameId*: TWinId
-  geometry*: TRect
-  visibleRect*: TRect
-  height*: int
-  opacity*: float
-  pos*: TPoint
-  screen*: int
-  size*: TSize
-  width*: int
-  windowId*: TWinId
-  x*: int
-  y*: int
-  desktop*: int
-  onAllDesktops*: bool
-  rect*: TRect
-  clientPos*: TPoint
-  clientSize*: TSize
-  resourceName*: string
-  resourceClass*: string
-  windowRole*: string
-  desktopWindow*: bool
-  dock*: bool
-  toolbar*: bool
-  menu*: bool
-  normalWindow*: bool
-  dialog*: bool
-  splash*: bool
-  utility*: bool
-  dropdownMenu*: bool
-  popupMenu*: bool
-  tooltip*: bool
-  notification*: bool
-  comboBox*: bool
-  dndIcon*: bool
-  windowType*: int
-  activities*: seq[string]
-  managed*: bool
-  deleted*: bool
-  shaped*: bool
+  alpha* {.importc: "alpha".}: bool 
+  frameId* {.importc: "frameId".}: TWinId 
+  geometry* {.importc: "geometry".}: TRect 
+  visibleRect* {.importc: "visibleRect".}: TRect 
+  height* {.importc: "height".}: int 
+  opacity* {.importc: "opacity".}: float 
+  pos* {.importc: "pos".}: TPoint 
+  screen* {.importc: "screen".}: int 
+  size* {.importc: "size".}: TSize 
+  width* {.importc: "width".}: int 
+  windowId* {.importc: "windowId".}: TWinId 
+  x* {.importc: "x*:".}: int 
+  y* {.importc: "y*:".}: int 
+  desktop* {.importc: "desktop".}: int 
+  onAllDesktops* {.importc: "onAllDesktops".}: bool 
+  rect* {.importc: "rect".}: TRect 
+  clientPos* {.importc: "clientPos".}: TPoint 
+  clientSize* {.importc: "clientSize".}: TSize 
+  resourceName* {.importc: "resourceName".}: string 
+  resourceClass* {.importc: "resourceClass".}: string 
+  windowRole* {.importc: "windowRole".}: string 
+  desktopWindow* {.importc: "desktopWindow".}: bool 
+  dock* {.importc: "dock".}: bool 
+  toolbar* {.importc: "toolbar".}: bool 
+  menu* {.importc: "menu".}: bool 
+  normalWindow* {.importc: "normalWindow".}: bool 
+  dialog* {.importc: "dialog".}: bool 
+  splash* {.importc: "splash".}: bool 
+  utility* {.importc: "utility".}: bool 
+  dropdownMenu* {.importc: "dropdownMenu".}: bool 
+  popupMenu* {.importc: "popupMenu".}: bool 
+  tooltip* {.importc: "tooltip".}: bool 
+  notification* {.importc: "notification".}: bool 
+  comboBox* {.importc: "comboBox".}: bool 
+  dndIcon* {.importc: "dndIcon".}: bool 
+  windowType* {.importc: "windowType".}: int 
+  activities* {.importc: "activities".}: seq[string]
+  managed* {.importc: "managed".}: bool 
+  deleted* {.importc: "deleted".}: bool 
+  shaped* {.importc: "shaped".}: bool 
 proc opacityChanged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, oldOpacity: float)) {.importcpp: "opacityChanged.connect".}
 proc damaged*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, damage: TRect)) {.importcpp: "damaged.connect".}
 proc propertyNotify*(toplevel: TToplevel, callback: proc(toplevel: TToplevel, a: int)) {.importcpp: "propertyNotify.connect".}
