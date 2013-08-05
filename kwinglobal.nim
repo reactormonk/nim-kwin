@@ -1,7 +1,7 @@
 import kwinhelper
 import kwinworkspace
 
-proc print*(objects: openarray[expr]) {.importc: "print"}
+proc print*(objects: varargs[expr, cstring]) {.importc: "print"}
 proc readConfig*(key: cstring, defaultValue: QVariant) {.importc: "readConfig"}
 proc registerScreenEdge*(border: TElectricBorder, callback: proc()) {.importc: "registerScreenEdge"}
 proc registerShortcut*(title, text, keySequence: cstring, callback: proc()) {.importc: "registerShortcut"}
