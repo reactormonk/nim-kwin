@@ -115,4 +115,3 @@ proc resetRepaints*(toplevel: TToplevel) {.importcpp: "resetRepaints".}
 proc resetDamage*(toplevel: TToplevel, r: TRect) {.importcpp: "resetDamage".}
 proc resetAndFetchDamage*(toplevel: TToplevel): bool {.importcpp: "resetAndFetchDamage".}
 proc getDamageRegionReply*(toplevel: TToplevel) {.importcpp: "getDamageRegionReply".}
-

@@ -68,3 +68,7 @@ proc closeWindow*(client: TClient) {.importcpp: "closeWindow".}
 proc clientArea*(option: TClientAreaOption, screen, desktop: int): TRect {.importc: "workspace.clientArea"}
 proc clientArea*(option: TClientAreaOption, point: TPoint, desktop: int): TRect {.importc: "workspace.clientArea"}
 proc clientArea*(option: TClientAreaOption, client: TClient): TRect {.importc: "workspace.clientArea"}
+proc showOutline*(geometry: TRect) {.importc: "workspace.showOutline".}
+proc showOutline*(x, y, width, height: int) {.importc: "workspace.showOutline".}
+proc hideOutline*() {.importc: "workspace.hideOutline".}
+proc clientList*(): seq[TClient] {.importc: "workspace.clientList".}
