@@ -39,3 +39,12 @@ proc makeSize*(w, h: int): TSize =
   new(result)
   result.w = w
   result.h = h
+
+type
+  TTimer* = object
+    interval* {.importc: "interval".}: int
+
+proc connect*(timer: TTimer, callback: proc()) {.importcpp: "timeout.connect".}
+proc start*(timer: TTimer) {.importcpp: "start".}
+proc stop*(timer: TTimer) {.importcpp: "stop".}
+proc makeTimer*(): TTimer {.importc: "new QTimer".}
