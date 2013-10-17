@@ -1,5 +1,5 @@
-import kwinhelper
-import kwinworkspace
+import kwin/helper
+import kwin/workspace
 
 proc print*(objects: varargs[expr, cstring]) {.importc: "print"}
 proc readConfig*(key: cstring, defaultValue: QVariant) {.importc: "readConfig"}

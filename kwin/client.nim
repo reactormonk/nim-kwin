@@ -1,4 +1,4 @@
-import kwinhelper, kwintoplevel
+import kwin/helper, kwin/toplevel
 
 type TClient* = ref object of TToplevel
   active* {.importc: "active".}: bool 

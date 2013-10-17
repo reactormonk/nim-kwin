@@ -37,7 +37,7 @@ type TToplevel* = ref object {.inheritable.}
   comboBox* {.importc: "comboBox".}: bool 
   dndIcon* {.importc: "dndIcon".}: bool 
   windowType* {.importc: "windowType".}: int 
-  activities* {.importc: "activities".}: seq[string]
+  activities* {.importc: "activities".}: seq[cstring]
   managed* {.importc: "managed".}: bool 
   deleted* {.importc: "deleted".}: bool 
   shaped* {.importc: "shaped".}: bool 
